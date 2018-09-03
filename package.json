@@ -1,0 +1,32 @@
+{
+  "name": "registry-log",
+  "version": "1.0.0",
+  "description": "Domain registry log based on hypercore and protobuf",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "node test/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoenix344/registry-log.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phoenix344/registry-log/issues"
+  },
+  "homepage": "https://github.com/phoenix344/registry-log#readme",
+  "dependencies": {
+    "hypercore": "^6.18.2",
+    "sodium-signatures": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "pbf": "^3.1.0"
+  }
+}
