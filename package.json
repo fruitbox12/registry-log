@@ -1,5 +1,5 @@
 {
-  "name": "registry-log",
+  "name": "@netrunner/registry-log",
   "version": "1.0.0",
   "description": "Domain registry log based on hypercore and protobuf",
   "main": "lib/index.js",
@@ -8,6 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "pbf": "pbfts . src schema.proto",
     "test": "node test/test"
   },
   "repository": {
@@ -22,11 +23,13 @@
   },
   "homepage": "https://github.com/phoenix344/registry-log#readme",
   "dependencies": {
-    "hypercore": "^6.18.2",
+    "hypercore": "^6.18.3",
     "sodium-signatures": "^2.1.1"
   },
   "devDependencies": {
+    "@netrunner/pbf-ts": "^1.0.3",
     "@types/node": "^10.9.4",
+    "@types/pbf": "^3.0.0",
     "pbf": "^3.1.0"
   }
 }
