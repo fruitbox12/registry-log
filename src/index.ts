@@ -1,20 +1,6 @@
-import { Entry, EntrySchema } from '../schema';
-import Pbf from 'pbf';
+import { Entry, EntrySchema } from './pbf/Entry';
 import { Hypercore } from '../types/hypercore';
 const hypercore = require('hypercore');
-
-export function decode(msg: Buffer): EntrySchema {
-    const pbf = new Pbf(msg);
-    return Entry.read(pbf);
-}
-
-export function encode(msg: EntrySchema): Uint8Array {
-    const pbf = new Pbf();
-    msg.time = Date.now();
-    Entry.write(msg, pbf);
-    const buffer = pbf.finish();
-    return buffer;
-}
 
 export function registryLog(storage: any, key?: Buffer | null, opts?: any): Hypercore<EntrySchema> {
     if ("object" === typeof key) {
@@ -22,6 +8,6 @@ export function registryLog(storage: any, key?: Buffer | null, opts?: any): Hype
         key = null;
     }
     if (!opts) opts = {};
-    opts.valueEncoding = { encode, decode };
+    opts.valueEncoding = Entry;
     return hypercore(storage, key, opts);
 }
