@@ -8,7 +8,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "pbf": "pbfts . src schema.proto",
+    "pbf": "pbfts . src/pbf schema.proto",
     "test": "node test/test"
   },
   "repository": {
