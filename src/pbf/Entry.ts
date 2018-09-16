@@ -28,6 +28,6 @@ export const Entry = {
         if (obj.name) { pbf.writeStringField(4, obj.name); }
         if (obj.target) { pbf.writeStringField(5, obj.target); }
         const buffer = pbf.finish();
-        return buffer;
+        return Buffer.from(buffer);
     }
 };

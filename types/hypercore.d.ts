@@ -1,10 +1,15 @@
 import { Readable, Writable, Duplex } from 'stream';
 import { EventEmitter } from 'events';
 
-declare interface HypercoreOptions {
+declare interface HypercoreValueEncoding<T> {
+    encode(buf: T): Buffer;
+    decode(buf: Buffer): T;
+}
+
+declare interface HypercoreOptions<T> {
     createIfMissing?: boolean;
     overwrite?: boolean;
-    valueEncoding?: 'json' | 'utf-8' | 'binary';
+    valueEncoding?: 'json' | 'utf-8' | 'binary' | HypercoreValueEncoding<T>;
     sparse?: boolean;
     secretKey?: Buffer;
     storeSecretKey?: boolean;
@@ -12,10 +17,10 @@ declare interface HypercoreOptions {
     onwrite?(index: number, data: Buffer, peer: string, cb: () => void): void;
 }
 
-declare interface HypercoreGetOptions {
+declare interface HypercoreGetOptions<T> {
     wait?: boolean;
     timeout?: number;
-    valueEncoding?: 'json' | 'utf-8' | 'binary';
+    valueEncoding?: 'json' | 'utf-8' | 'binary' | HypercoreValueEncoding<T>;
 }
 
 declare interface HypercoreDownloadRange {
@@ -52,18 +57,17 @@ declare interface HypercoreReplicateOptions {
 }
 
 declare interface Hypercore<T> extends EventEmitter {
-
     writable: boolean;
     readable: boolean;
     key: Buffer | null;
     discoveryKey: Buffer | null;
     length: number;
 
-    get(index: number, options: HypercoreGetOptions, callback: (err: Error, data: T) => void): void;
+    get(index: number, options: HypercoreGetOptions<T>, callback: (err: Error, data: T) => void): void;
     get(index: number, callback: (err: Error, data: T) => void): void;
-    getBatch(start: number, end: number, options: HypercoreGetOptions, callback: (err: Error, data: T) => void): void;
+    getBatch(start: number, end: number, options: HypercoreGetOptions<T>, callback: (err: Error, data: T) => void): void;
     getBatch(start: number, end: number, callback: (err: Error, data: T) => void): void;
-    head(options: HypercoreGetOptions, callback: (err: Error, data: T) => void): void;
+    head(options: HypercoreGetOptions<T>, callback: (err: Error, data: T) => void): void;
     head(callback?: (err: Error, data: T) => void): void;
     download(range: HypercoreDownloadRange, callback: (err: Error, data: T) => void): void;
     download(callback: (err: Error, data: T) => void): void;
