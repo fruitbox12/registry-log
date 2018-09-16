@@ -90,6 +90,7 @@ declare interface Hypercore<T> extends EventEmitter {
     createWriteStream(): Writable;
     replicate(options?: HypercoreReplicateOptions): Duplex;
     close(callback: (err: Error) => void): void;
+    ready(callback: (err: Error) => void): void;
 
     on(event: "ready" | "append" | "sync" | "close", listener: () => void): this;
     on(event: "error", listener: (err: Error) => void): this;
