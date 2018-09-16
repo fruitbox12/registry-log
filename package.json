@@ -15,7 +15,11 @@
     "type": "git",
     "url": "git+https://github.com/phoenix344/registry-log.git"
   },
-  "keywords": ["domain", "registry", "dat"],
+  "keywords": [
+    "domain",
+    "registry",
+    "dat"
+  ],
   "author": "phoenix344",
   "license": "MIT",
   "bugs": {
@@ -28,6 +32,7 @@
   },
   "devDependencies": {
     "@netrunner/pbf-ts": "^1.0.5",
+    "@netrunner/types": "^1.0.2",
     "@types/node": "^10.9.4",
     "@types/pbf": "^3.0.0",
     "random-access-memory": "^3.0.0"

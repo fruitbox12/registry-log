@@ -1,6 +1,6 @@
+import "@netrunner/types";
 import { Entry, EntrySchema } from './pbf/Entry';
-import { Hypercore, HypercoreOptions, HypercoreValueEncoding } from '../types/hypercore';
-const hypercore = require('hypercore');
+import hypercore from "hypercore";
 
 export function registryLog(storage: any,
     key?: Buffer | null | HypercoreOptions<EntrySchema>,
