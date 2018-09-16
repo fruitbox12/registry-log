@@ -10,8 +10,11 @@ message Entry {
     required uint64 created = 3;
     required uint64 updated = 4;
 
+    // remove flag
+    required bool removed = 5;
+
     // domain name
-    required string name = 5;
+    required string name = 6;
 
     // domain target (URI)
     required string target = 6;

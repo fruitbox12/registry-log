@@ -4,6 +4,7 @@ export interface EntrySchema {
     sig: Uint8Array;
     created: number;
     updated: number;
+    removed: boolean;
     name: string;
     target: string;
 }
