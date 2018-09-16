@@ -1,5 +1,6 @@
-import { Entry, EntrySchema } from './pbf/Entry';
 import hypercore, { HypercoreOptions, Hypercore, HypercoreValueEncoding } from "hypercore";
+import { EntrySchema, Entry } from "./pbf/Entry";
+export { EntrySchema, Entry } from './pbf/Entry';
 
 export function registryLog(storage: any,
     key?: Buffer | Uint8Array | HypercoreOptions<EntrySchema>,

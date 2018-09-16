@@ -1,6 +1,6 @@
 {
   "name": "@netrunner/registry-log",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Domain registry log based on hypercore and protobuf",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
