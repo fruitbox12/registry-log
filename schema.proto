@@ -7,11 +7,12 @@ message Entry {
     required bytes sig = 2;
 
     // update time
-    required uint64 time = 3;
+    required uint64 created = 3;
+    required uint64 updated = 4;
 
     // domain name
-    required string name = 4;
+    required string name = 5;
 
     // domain target (URI)
-    required string target = 5;
+    required string target = 6;
 }

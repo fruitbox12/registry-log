@@ -2,7 +2,8 @@
 export interface EntrySchema {
     key: Uint8Array;
     sig: Uint8Array;
-    time: number;
+    created: number;
+    updated: number;
     name: string;
     target: string;
 }

@@ -10,24 +10,25 @@ module.exports = [
         });
 
         feed.ready(() => {
-            const now = Date.now();
+            const created = Date.now();
+            const updated = created + (24 * 60 * 60);
             feed.append({
                 key: Buffer.from("the public key"),
                 sig: Buffer.from("fake sig"),
-                time: now,
+                created,
+                updated,
                 name: "google",
                 target: "http://www.google.com"
             }, (err) => {
                 if (err) return console.log(err);
                 feed.get(0, (err, entry) => {
                     if (err) return console.log(err);
-                    
                     assert.deepEqual(entry.key, Buffer.from("the public key"));
                     assert.deepEqual(entry.sig, Buffer.from("fake sig"));
-                    assert.equal(entry.time, now);
+                    assert.equal(entry.created, created);
+                    assert.equal(entry.updated, updated);
                     assert.equal(entry.name, "google");
                     assert.equal(entry.target, "http://www.google.com");
-
                 });
             });
         });
