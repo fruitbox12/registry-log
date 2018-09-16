@@ -1,6 +1,6 @@
 {
   "name": "@netrunner/registry-log",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Domain registry log based on hypercore and protobuf",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,8 +15,8 @@
     "type": "git",
     "url": "git+https://github.com/phoenix344/registry-log.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["domain", "registry", "dat"],
+  "author": "phoenix344",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/phoenix344/registry-log/issues"
