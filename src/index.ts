@@ -14,5 +14,5 @@ export function registryLog(storage: any,
     }
     if (!opts) opts = {};
     opts.valueEncoding = Entry as HypercoreValueEncoding<EntrySchema>;
-    return hypercore(storage, key, opts);
+    return hypercore(storage, key, opts); 
 }

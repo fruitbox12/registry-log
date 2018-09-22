@@ -18,7 +18,7 @@ module.exports = [
                 created,
                 updated,
                 name: "google",
-                target: "http://www.google.com"
+                content: "http://www.google.com"
             }, (err) => {
                 if (err) return console.log(err);
                 feed.get(0, (err, entry) => {
@@ -28,7 +28,7 @@ module.exports = [
                     assert.equal(entry.created, created);
                     assert.equal(entry.updated, updated);
                     assert.equal(entry.name, "google");
-                    assert.equal(entry.target, "http://www.google.com");
+                    assert.equal(entry.content, "http://www.google.com");
                 });
             });
         });
