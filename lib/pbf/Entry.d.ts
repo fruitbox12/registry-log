@@ -3,10 +3,10 @@ export interface EntrySchema {
     key: Uint8Array;
     sig: Uint8Array;
     created: number;
-    updated: number;
-    removed: boolean;
+    updated?: number;
+    removed?: boolean;
     name: string;
-    target: string;
+    content: string;
 }
 export declare const Entry: {
     decode(buf: Uint8Array | Buffer): EntrySchema;

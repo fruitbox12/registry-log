@@ -14,13 +14,15 @@ export const Entry = {
     decode(buf: Buffer | Uint8Array): EntrySchema {
         const pbf = new Pbf(buf);
         return pbf.readFields<EntrySchema>((tag: number, obj?: EntrySchema, pbf?: Pbf) => {
-            if (tag === 1 && obj && pbf) { obj.key = pbf.readBytes(); }
-            else if (tag === 2 && obj && pbf) { obj.sig = pbf.readBytes(); }
-            else if (tag === 3 && obj && pbf) { obj.created = pbf.readVarint(); }
-            else if (tag === 4 && obj && pbf) { obj.updated = pbf.readVarint(); }
-            else if (tag === 5 && obj && pbf) { obj.removed = pbf.readBoolean(); }
-            else if (tag === 6 && obj && pbf) { obj.name = pbf.readString(); }
-            else if (tag === 7 && obj && pbf) { obj.content = pbf.readString(); }
+            if (obj) {
+                if (tag === 1 && 'undefined' !== typeof obj.key && pbf) { obj.key = pbf.readBytes(); }
+                else if (tag === 2 && 'undefined' !== typeof obj.sig && pbf) { obj.sig = pbf.readBytes(); }
+                else if (tag === 3 && 'undefined' !== typeof obj.created && pbf) { obj.created = pbf.readVarint(); }
+                else if (tag === 4 && 'undefined' !== typeof obj.updated && pbf) { obj.updated = pbf.readVarint(); }
+                else if (tag === 5 && 'undefined' !== typeof obj.removed && pbf) { obj.removed = pbf.readBoolean(); }
+                else if (tag === 6 && 'undefined' !== typeof obj.name && pbf) { obj.name = pbf.readString(); }
+                else if (tag === 7 && 'undefined' !== typeof obj.content && pbf) { obj.content = pbf.readString(); }
+            }
         }, { key: new Uint8Array(0), sig: new Uint8Array(0), created: 0, updated: 0, removed: false, name: "", content: "" });
     },
 
