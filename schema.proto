@@ -1,21 +1,11 @@
 message Entry {
-
-    // public key
     required bytes key = 1;
-
-    // signature
     required bytes sig = 2;
-
-    // update time
     required uint64 created = 3;
-    required uint64 updated = 4;
 
-    // remove flag
-    required bool removed = 5;
-
-    // domain name
+    optional uint64 updated = 4;
+    optional bool removed = 5;
+    
     required string name = 6;
-
-    // domain target (URI)
-    required string target = 6;
+    required string content = 7;
 }
