@@ -6,7 +6,9 @@ export interface EntrySchema {
     updated?: number;
     removed?: boolean;
     name: string;
-    content: string;
+    target: string;
+    title?: string;
+    description?: string;
 }
 export declare const Entry: {
     decode(buf: Uint8Array | Buffer): EntrySchema;

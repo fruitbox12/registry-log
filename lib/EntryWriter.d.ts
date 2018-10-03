@@ -1,5 +1,5 @@
 import { Hypercore } from 'hypercore';
-import { EntrySchema } from "./";
+import { EntrySchema } from "./pbf/Entry";
 export declare class EntryWriter {
     private feed;
     constructor(feed: Hypercore<EntrySchema>);

@@ -1,14 +1,22 @@
-import { EntrySchema } from "./";
+import { EntrySchema } from "./pbf/Entry";
 import { createHash } from "crypto";
 import { sign as sodiumSign, verify as sodiumVerify, SodiumSignaturesKeyPair } from "sodium-signatures";
 
-export interface ShortEntrySchema { name: string, content: string, removed: boolean }
+export interface ShortEntrySchema {
+    name: string;
+    target: string;
+    title?: string;
+    description?: string;
+    removed?: boolean;
+}
 
 export function hash(entry: ShortEntrySchema | EntrySchema): Buffer {
     return createHash("sha256").update(Buffer.concat([
         Buffer.from(entry.name),
-        Buffer.from(entry.content),
-        Buffer.from([entry.removed])
+        Buffer.from(entry.target),
+        Buffer.from(entry.title || ""), 
+        Buffer.from(entry.description || ""),
+        Buffer.from([entry.removed || false])
     ])).digest();
 }
 
@@ -20,25 +28,25 @@ export function verify(entry: EntrySchema): boolean {
     return sodiumVerify(hash(entry), entry.sig as Buffer, entry.key as Buffer);
 }
 
-export function createEntry(keys: SodiumSignaturesKeyPair, name: string, content: string): EntrySchema {
+export function createEntry(keys: SodiumSignaturesKeyPair, name: string, target: string): EntrySchema {
     const entry: EntrySchema = {
         key: keys.publicKey,
         sig: Buffer.alloc(0),
         created: 0,
         updated: 0,
-        name, content,
+        name, target,
         removed: false
     };
     entry.sig = sign(keys.secretKey, entry);
     return entry;
 }
 
-export function updateEntry(keys: SodiumSignaturesKeyPair, content: string, entry: EntrySchema) {
+export function updateEntry(keys: SodiumSignaturesKeyPair, target: string, entry: EntrySchema) {
     if (!Buffer.from(entry.key).equals(keys.publicKey) && !entry.removed) {
         throw new Error("The key can't be updated or rewritten. The public key is not equal!");
     }
     const newEntry = { ...entry };
-    newEntry.content = content;
+    newEntry.target = target;
     newEntry.sig = sign(keys.secretKey, newEntry);
     return newEntry;
 }

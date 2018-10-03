@@ -1,5 +1,5 @@
 import { Hypercore } from 'hypercore';
-import { EntrySchema } from "./";
+import { EntrySchema } from "./pbf/Entry";
 import { verify } from './util';
 
 export class EntryWriter {
@@ -39,7 +39,7 @@ export class EntryWriter {
                     updated,
                     sig: entry.sig,
                     name: registered.name,
-                    content: entry.content
+                    target: entry.target
                 };
                 if (verify(entry)) {
                     this.feed.append(entry, async (err: Error) => {
@@ -63,7 +63,7 @@ export class EntryWriter {
                     ...registered,
                     sig: entry.sig,
                     updated,
-                    content: entry.content,
+                    target: entry.target,
                     removed: true
                 }
 

@@ -47,8 +47,8 @@ module.exports = [
         assert.equal(resultA.name, a.name, "name must be equal");
         assert.equal(resultA.name, "example", "name must be equal");
 
-        assert.equal(resultA.content, a.content, "content must be equal");
-        assert.equal(resultA.content, "a.tld", "content must be equal");
+        assert.equal(resultA.target, a.target, "target must be equal");
+        assert.equal(resultA.target, "a.tld", "target must be equal");
 
         assert.deepEqual(resultA.key, a.key, "key must be equal");
         assert.deepEqual(resultA.sig, a.sig, "signature must be equal");
@@ -67,8 +67,8 @@ module.exports = [
         assert.equal(resultB.name, b.name, "name must be equal");
         assert.equal(resultB.name, "example", "name must be equal");
 
-        assert.equal(resultB.content, b.content, "content must be equal");
-        assert.equal(resultB.content, "b.tld", "content must be equal");
+        assert.equal(resultB.target, b.target, "target must be equal");
+        assert.equal(resultB.target, "b.tld", "target must be equal");
 
         assert.deepEqual(resultB.key, b.key, "key must be equal");
         assert.deepEqual(resultB.sig, b.sig, "signature must be equal");
@@ -87,8 +87,8 @@ module.exports = [
         assert.equal(resultC.name, c.name, "name must be equal");
         assert.equal(resultC.name, "example", "name must be equal");
 
-        assert.equal(resultC.content, c.content, "content must be equal");
-        assert.equal(resultC.content, "b.tld", "content must be equal");
+        assert.equal(resultC.target, c.target, "target must be equal");
+        assert.equal(resultC.target, "b.tld", "target must be equal");
 
         assert.deepEqual(resultC.key, c.key, "key must be equal");
         assert.deepEqual(resultC.sig, c.sig, "signature must be equal");
