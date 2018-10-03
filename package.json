@@ -1,6 +1,6 @@
 {
   "name": "@netrunner/registry-log",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Domain registry log based on hypercore and protobuf",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "pbf": "pbfts . src/pbf schema.proto",
-    "test": "node test/test"
+    "test": "node test/test",
+    "example": "node lib/example"
   },
   "repository": {
     "type": "git",

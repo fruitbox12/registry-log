@@ -9,18 +9,16 @@ registry-log requires the [hypercore](https://www.npmjs.com/package/hypercore) l
 the encoding/decoding methods. The API is exactly the same as the hypercore API.
 
 ```typescript
-const { registryLog } = require("@netrunner/registry-log");
 const ram = require("random-access-memory");
+const { registryLog } = require("@netrunner/registry-log");
 
-const feed = registryLog(filename => {
-    return ram(Buffer.from(filename, "utf8"));
-});
+const feed = registryLog(filename => ram(filename));
 
 feed.ready(() => {
     feed.append({
         key: Buffer.from("the public key"),
         sig: Buffer.from("fake sig"),
-        time: Date.now(),
+        created: Date.now(),
         name: "google",
         target: "http://www.google.com"
     }, (err) => {
@@ -28,7 +26,6 @@ feed.ready(() => {
         feed.get(0, (err, entry) => {
             if (err) return console.log(err);
             console.log(entry);
-            // => {key: ..., sig: ..., time: ..., name: ..., target: ...}
         });
     });
 });
