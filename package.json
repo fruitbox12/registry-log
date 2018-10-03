@@ -28,11 +28,12 @@
   "homepage": "https://github.com/phoenix344/registry-log#readme",
   "dependencies": {
     "hypercore": "^6.18.3",
-    "pbf": "^3.1.0"
+    "pbf": "^3.1.0",
+    "sodium-signatures": "^2.1.1"
   },
   "devDependencies": {
     "@netrunner/pbf-ts": "^1.0.10",
-    "@netrunner/types": "^1.0.3",
+    "@netrunner/types": "^1.0.5",
     "@types/node": "^10.9.4",
     "@types/pbf": "^3.0.0",
     "random-access-memory": "^3.0.0"
